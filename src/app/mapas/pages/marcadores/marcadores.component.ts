@@ -10,6 +10,14 @@ import * as mapboxgl from 'mapbox-gl';
         height: 100%;
         width: 100%;
       }
+
+      .list-group {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 99;
+        cursor: pointer;
+      }
     `,
   ],
 })
@@ -31,8 +39,18 @@ export class MarcadoresComponent implements AfterViewInit {
     // markerHtml.innerHTML = 'Hello World\n↓'; // <--- This is the text that will appear on the marker and it customizes the marker with any HTML you want.
 
     // const marker = new mapboxgl.Marker({ element: markerHtml })
-    const marker = new mapboxgl.Marker()
+    /* const marker = new mapboxgl.Marker()
+      .setLngLat(this.center)
+      .addTo(this.mapa); */
+  }
+
+  agregarMarcador() {
+    const color = '#xxxxxx'.replace(/x/g, y=>(Math.random()*16|0).toString(16));
+
+    const nuevoMarcador = new mapboxgl.Marker({ draggable: true, color })
       .setLngLat(this.center)
       .addTo(this.mapa);
   }
+
+  irMarcador() {}
 }
