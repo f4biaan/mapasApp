@@ -23,7 +23,6 @@ import * as mapboxgl from 'mapbox-gl';
     `,
   ],
 })
-
 export class ZoomRangeComponent implements AfterViewInit {
   @ViewChild('mapa') divMapa!: ElementRef;
   mapa!: mapboxgl.Map;
@@ -38,17 +37,27 @@ export class ZoomRangeComponent implements AfterViewInit {
       center: [-79.19864771812922, -3.9870315009066095],
       zoom: this.zoomLevel,
     });
+
+    this.mapa.on('zoom', (ev) => {
+      this.zoomLevel = this.mapa.getZoom();
+    });
+
+    this.mapa.on('zoomend', (ev) => {
+      if (this.mapa.getZoom() > 18) {
+        this.mapa.zoomTo(18);
+      }
+    });
   }
 
   zoomOut() {
     this.mapa.zoomOut();
-    // console.log(this.mapa.getZoom());
-    this.zoomLevel = this.mapa.getZoom();
   }
 
   zoomIn() {
     this.mapa.zoomIn();
-    // console.log(this.mapa.getZoom());
-    this.zoomLevel = this.mapa.getZoom();
+  }
+
+  zoomCambio(valor: string) {
+    this.mapa.zoomTo(Number(valor));
   }
 }
