@@ -15,10 +15,12 @@ import { environment } from '../../../../environments/environment';
   ],
 })
 export class FullScreenComponent implements OnInit {
+
   constructor() {}
 
   ngOnInit(): void {
-    (mapboxgl as any).accessToken = environment.mapboxToken;
+    console.log('fullScreenComponent');
+
     var map = new mapboxgl.Map({
       container: 'mapa',
       style: 'mapbox://styles/mapbox/streets-v11',
