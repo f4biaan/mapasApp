@@ -15,7 +15,6 @@ import { environment } from '../../../../environments/environment';
   ],
 })
 export class FullScreenComponent implements OnInit {
-
   constructor() {}
 
   ngOnInit(): void {
@@ -24,6 +23,8 @@ export class FullScreenComponent implements OnInit {
     var map = new mapboxgl.Map({
       container: 'mapa',
       style: 'mapbox://styles/mapbox/streets-v11',
+      center: [-79.19929661336806, -3.9866247357682645],
+      zoom: 16,
     });
   }
 }
