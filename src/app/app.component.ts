@@ -12,7 +12,7 @@ export class AppComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    console.log('appComponent');
+    // console.log('appComponent');
     (mapboxgl as any).accessToken = environment.mapboxToken;
   }
 }
